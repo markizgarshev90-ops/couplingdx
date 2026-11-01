@@ -9,7 +9,7 @@ couplingdx/   the package: design diagnostics and the estimators (no dependencie
 analysis/     scripts reproducing every number, table and figure; outputs in analysis/out/
 data/         derived FIC bite timelines, extracted bite times, meal-to-participant table
 figures/      Figures 1-4
-paper/        main.tex, supplement.tex
+paper/        supplement.tex (LaTeX source of the Supplementary Material)
 ```
 
 ## The package

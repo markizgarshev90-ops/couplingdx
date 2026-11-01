@@ -1,0 +1,13 @@
+test,delta_strangers,delta_close,theta_close,n,R,pooled_reject,pooled_median_close,pooled_median_strangers,partner_diff_reject,partner_close_reject,partner_median_close,pairing,delta,theta,partner_reject,partner_median,partner_target
+group comparison,0.0,-0.05,0.0,100,4000,0.826,0.6743379961592247,1.0044087766567595,0.04475,0.05,0.0012959769872264546,,,,,,
+group comparison,0.0,-0.05,1.0,100,4000,0.9985,0.4265885879302481,1.004561181972646,0.3485,0.63825,0.1354591894367274,,,,,,
+group comparison,0.0,0.05,0.0,100,4000,0.74925,1.3195360966291987,1.0004503649294794,0.0515,0.055,0.0019149735654663462,,,,,,
+group comparison,0.0,0.05,1.0,100,4000,0.32425,0.8358610602850796,1.0061444435623597,0.82675,0.9835,0.2719472653778807,,,,,,
+"partner effect, one group",,,,100,4000,,,,,,,random,-0.05,0.0,0.05475,0.002043623422346483,
+"partner effect, one group",,,,100,4000,,,,,,,random,0.0,0.0,0.052,0.00044702619993057004,
+"partner effect, one group",,,,100,4000,,,,,,,random,0.05,0.0,0.052,0.0019738333369809452,
+"partner effect, one group",,,,100,4000,,,,,,,screened,-0.05,0.0,0.05,0.0021956009882591453,
+"partner effect, one group",,,,100,4000,,,,,,,screened,0.0,0.0,0.04525,0.0019111970454139442,
+"partner effect, one group",,,,100,4000,,,,,,,screened,0.05,0.0,0.047,0.0018221727290210392,
+"partner effect, one group",,,,100,4000,,,,,,,random,0.0,0.5,0.47375,0.11832563870247889,0.11718372568389678
+"partner effect, one group",,,,100,4000,,,,,,,random,0.0,1.0,0.9065,0.20387240895035513,0.2023336926442933

@@ -1,0 +1,11 @@
+case,rho,theta_close,n,R,reject,formula,median_close,target_close,median_strangers,mean_theta_strangers,mean_theta_close,delta,median_partner
+homogeneous coupling,0.3,0.0,100,4000,0.0595,0.05,1.0019204428961546,1.0,,,,,
+homogeneous coupling,0.3,1.0,100,4000,0.7905,0.8261024437685622,0.6323862733497575,0.6321205588285577,,,,,
+homogeneous coupling,0.6,0.0,100,4000,0.052,0.05,1.0051410485366112,1.0,,,,,
+homogeneous coupling,0.6,1.0,100,4000,0.6005,0.6451821447205912,0.6347307066305474,0.6321205588285577,,,,,
+"coupling depends on contrast, same rule",0.3,,100,4000,0.0575,,0.8130181631130451,,0.8483331344767056,0.9210704614761385,1.0192494527314662,,
+"coupling depends on contrast, same rule",0.6,,100,4000,0.088,,0.7477006541678131,,0.8470965542667355,0.9207899722420619,1.1717205849110908,,
+"partner test, existing pairs",0.3,,100,4000,0.0485,,,,,,,0.0,0.0018487730189137093
+"partner test, existing pairs",0.3,,100,4000,0.05525,,,,,,,0.05,-0.0008326230940583679
+"partner test, existing pairs",0.6,,100,4000,0.0515,,,,,,,0.0,-0.0033080440653695756
+"partner test, existing pairs",0.6,,100,4000,0.0525,,,,,,,0.05,-0.0008352046704727023

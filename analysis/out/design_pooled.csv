@@ -1,0 +1,25 @@
+scenario,sigma_p,sigma_o,pairing,T,m,n80,n90
+all stable,0.013,0.0,random,740.0,4,76,102
+all stable,0.013,0.0,random,740.0,8,66,88
+all stable,0.013,0.0,random,3000.0,4,29,38
+all stable,0.013,0.0,random,3000.0,8,21,28
+all stable,0.013,0.0,screened,740.0,4,34,45
+all stable,0.013,0.0,screened,740.0,8,30,40
+all stable,0.013,0.0,screened,3000.0,4,13,17
+all stable,0.013,0.0,screened,3000.0,8,10,13
+half occasion,0.009192388155425116,0.009192388155425116,random,740.0,4,376,503
+half occasion,0.009192388155425116,0.009192388155425116,random,740.0,8,273,365
+half occasion,0.009192388155425116,0.009192388155425116,random,3000.0,4,249,333
+half occasion,0.009192388155425116,0.009192388155425116,random,3000.0,8,167,223
+half occasion,0.009192388155425116,0.009192388155425116,screened,740.0,4,209,279
+half occasion,0.009192388155425116,0.009192388155425116,screened,740.0,8,162,216
+half occasion,0.009192388155425116,0.009192388155425116,screened,3000.0,4,137,183
+half occasion,0.009192388155425116,0.009192388155425116,screened,3000.0,8,99,132
+half the stable SD,0.0065,0.0,random,740.0,4,419,561
+half the stable SD,0.0065,0.0,random,740.0,8,310,415
+half the stable SD,0.0065,0.0,random,3000.0,4,167,223
+half the stable SD,0.0065,0.0,random,3000.0,8,99,133
+half the stable SD,0.0065,0.0,screened,740.0,4,232,311
+half the stable SD,0.0065,0.0,screened,740.0,8,184,246
+half the stable SD,0.0065,0.0,screened,3000.0,4,90,121
+half the stable SD,0.0065,0.0,screened,3000.0,8,58,78

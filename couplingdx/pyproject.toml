@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "couplingdx"
+version = "0.3.0"
+description = "Design diagnostics and a pooled estimator for two-person coupling studies"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [{name = "Mark D. Izgarshev"}, {name = "Sophie Noemi Kieckens"}]
+dependencies = []
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+Repository = "https://github.com/markizgarshev90-ops/couplingdx"
+
+[project.scripts]
+couplingdx = "couplingdx.__main__:main"
+
+[tool.setuptools]
+packages = ["couplingdx"]

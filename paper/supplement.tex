@@ -1,0 +1,978 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+
+\usepackage[hidelinks]{hyperref}
+
+\onehalfspacing
+\setlength{\emergencystretch}{2em}
+\makeatletter\def\verbatim@font{\normalfont\ttfamily\small}\makeatother
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{remark}[proposition]{Remark}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theproposition}{S\arabic{section}.\arabic{proposition}}
+\newcommand{\ki}{k_i}
+\newcommand{\kj}{k_j}
+\newcommand{\gt}{\tilde{g}}
+\title{Supplementary Material\\
+\large Dividing by a Difference of Noisy Baselines: Why Per-Dyad Estimates of a Coupling Parameter Fail, and How to Size a Pooled Alternative}
+\author{Mark D. Izgarshev and Sophie Noemi Kieckens}
+\date{}
+\begin{document}
+\maketitle
+
+\noindent Equations, sections, tables and propositions prefixed S refer to this
+document; unprefixed equation, table and figure numbers refer to the main text.
+
+% =====================================================================
+\section{The coupling models}
+
+\subsection{A shared multiplicative gain cannot produce convergence}
+
+A natural first formulation treats company as raising both diners' engagement
+through a factor common to the dyad:
+\begin{equation}\label{eq:shared}
+\ki'(t)=\beta_ie^{-l_it}\,w(t),
+\qquad
+\kj'(t)=\beta_je^{-l_jt}\,w(t),
+\qquad w>0.
+\end{equation}
+Then $D'=\kj'-\ki'=(\beta_je^{-l_jt}-\beta_ie^{-l_it})\,w$, so
+\[
+\operatorname{sgn}D'(t)=\operatorname{sgn}\bigl(\beta_je^{-l_jt}-\beta_ie^{-l_it}\bigr)
+\]
+for any positive $w$. Nothing in the argument uses more than positivity, so $w$ may
+depend on time, on the state, or on both. For $n\ge2$ agents with
+$x_a'=f_a(t)\,w(t,x_1,\ldots,x_n)$ and $w>0$,
+$\operatorname{sgn}(x_a-x_b)'=\operatorname{sgn}(f_a-f_b)$ for every pair.
+
+This fixes the \emph{direction} in which each gap moves, not whether it shrinks.
+If $\int^\infty w<\infty$ the differences freeze at nonzero values. When a gap does
+contract, the contraction comes from the individual profiles, since $|x_a-x_b|$
+decreases exactly when $x_a-x_b$ and $f_a-f_b$ have opposite signs. The form
+contains no restoring term whose sign responds to the current gap.
+
+\paragraph{An exactly solvable case.} Take $w=a(1+|\ki-\kj|)$, with $a>0$ a
+closeness score. Then $D'=g(1+|D|)$ with
+$g=a(\beta_je^{-l_jt}-\beta_ie^{-l_it})$. Let
+$\psi(x)=\operatorname{sgn}(x)\log(1+|x|)$, so $\psi'(x)=1/(1+|x|)$ and
+$\psi(D(t))=\psi(D(0))+\Phi(t)$ with $\Phi(t)=\int_0^tg$. For a shared meal,
+$D(0)=0$ and $D(t)=\operatorname{sgn}\Phi(t)\,(e^{|\Phi(t)|}-1)$. As $t\to\infty$,
+$\Phi\to\Phi_\infty=a(\beta_j/l_j-\beta_i/l_i)$ and
+\[
+|D_\infty|=e^{|\Phi_\infty|}-1,
+\]
+which grows without bound in closeness: the closer two diners feel, the further
+apart they finish. This is the formulation of Kieckens and Izgarshev (2026), who
+coupled the diners through a shared affiliation factor
+$a_{ij}(|\ki-\kj|+1)$, with $a_{ij}$ a closeness score, and who note that the factor
+cannot steer the gap. The argument above is more general, since it holds for any
+positive shared factor, and it motivates the antisymmetric couplings of the main
+text.
+
+\subsection{Intake matching}
+
+For main-text Eq.~(1) with $D(0)=D_0$, the gap obeys $D'=\gt-2\kappa D$,
+which is linear. Multiplying by $e^{2\kappa t}$ gives
+$(De^{2\kappa t})'=\gt e^{2\kappa t}$, so
+\begin{equation}\label{eq:voc}
+D(t)=D_0e^{-2\kappa t}+\int_0^t e^{-2\kappa(t-s)}\gt(s)\,ds .
+\end{equation}
+Using $\int_0^t\beta e^{-ls}e^{2\kappa s}ds=\beta(e^{(2\kappa-l)t}-1)/(2\kappa-l)$,
+for $2\kappa\neq l_i,l_j$,
+\begin{equation}\label{eq:solution}
+D(t)=D_0 e^{-2\kappa t}
++\frac{A\beta_j(e^{-l_j t}-e^{-2\kappa t})}{2\kappa-l_j}
+-\frac{A\beta_i(e^{-l_i t}-e^{-2\kappa t})}{2\kappa-l_i},
+\end{equation}
+with the removable limit $A\beta\,te^{-lt}$ in the excluded cases. For $\kappa>0$,
+$D(t)\to0$ at the exponential rate $\min(2\kappa,l_i,l_j)$, since every term is a
+multiple of $e^{-l_it}$, $e^{-l_jt}$ or $e^{-2\kappa t}$. That rate is informative
+about the coupling only when $2\kappa<\min(l_i,l_j)$; otherwise the approach to zero
+is set by the decaying drives and would occur with $\kappa=0$. The convergence is
+also asymptotic in a system whose forcing decays over hours, so it is not a
+prediction about meals. The main text therefore works on $[0,T]$.
+
+Writing $\Sigma(T)=\ki(T)+\kj(T)$ for the conserved total of Eq.~(2), integration
+gives $\ki(T)=\tfrac12(\Sigma(T)-D(T))$ and $\kj(T)=\tfrac12(\Sigma(T)+D(T))$. Each
+diner is at the mean of the two solo intakes, offset by half the residual gap; the
+offset vanishes only as $\kappa\to\infty$ or $T\to\infty$.
+
+\paragraph{Positivity.} Because the coupling subtracts from the leading diner's
+rate, a bite frequency can in principle become negative. Suppose $\ki>\kj$, so
+$D<0$. From \eqref{eq:voc} with $D_0=0$ and
+$\gt(s)\geq-A\beta_ie^{-l_is}$,
+\[
+\kappa|D(t)|\le \kappa A\beta_i\frac{e^{-l_it}-e^{-2\kappa t}}{2\kappa-l_i}
+\le A\beta_ie^{-l_it}\,\frac{\kappa}{2\kappa-l_i}\qquad(2\kappa>l_i),
+\]
+which is at most $A\beta_ie^{-l_it}$ when $\kappa\ge l_i$. Hence $\ki'\ge0$, and by
+symmetry $\kj'\ge0$, whenever $\kappa\ge\max(l_i,l_j)$. This is a sufficient
+condition. It holds automatically in the slow-drive regime, but it excludes the
+regime $2\kappa<\min(l_i,l_j)$ in which the asymptotic convergence rate would be
+informative about $\kappa$.
+
+\subsection{Rate matching}
+
+Coupling the rates through their instantaneous difference with a dimensionless
+constant $c$, $\ki'=A\beta_ie^{-l_it}+c(\kj'-\ki')$ and symmetrically, is not a
+dynamical model. Writing $R=\kj'-\ki'$ gives $R=\gt-2cR$, an algebraic relation
+$R=\gt/(1+2c)$ with no memory. The dynamical formulation is Eq.~(3), which makes
+the rates state variables.
+
+The matrix of Eq.~(3) has trace $-(l_i+l_j+2\kappa)<0$, determinant
+$\Delta:=l_il_j+\kappa(l_i+l_j)>0$ and discriminant $(l_i-l_j)^2+4\kappa^2\ge0$, so
+its eigenvalues
+\[
+\lambda_\pm=-\tfrac12\Bigl[(l_i+l_j+2\kappa)\mp\sqrt{(l_i-l_j)^2+4\kappa^2}\Bigr]
+\]
+are real and strictly negative for positive $l_i,l_j$, and $r_i,r_j\to0$ for every
+$\kappa\ge0$. The closed positive quadrant is forward invariant: if $r_i=0$ and
+$r_j\ge0$ then $r_i'=\kappa r_j\ge0$, so the vector field does not point out of the
+quadrant on its boundary.
+
+Let $I_a=\int_0^\infty r_a$, finite because the eigenvalues are negative.
+Integrating Eq.~(3) over $[0,\infty)$ gives
+$(l_i+\kappa)I_i-\kappa I_j=A\beta_i$ and $-\kappa I_i+(l_j+\kappa)I_j=A\beta_j$,
+with determinant $\Delta$. Solving, with $D(0)=0$,
+$D_\infty(\kappa)=A(\beta_jl_i-\beta_il_j)/\Delta$ and
+\begin{equation}\label{eq:ratecontraction}
+\frac{D_\infty(\kappa)}{D_\infty(0)}=\frac{1}{1+\kappa(l_i^{-1}+l_j^{-1})}.
+\end{equation}
+This depends on $l$ through $l^{-1}$ and inherits the non-identifiability of $l$
+at meal length; the estimators use the finite-horizon limit below, not this
+expression. Unlike intake matching, rate matching does not conserve total intake:
+$I_i+I_j=A[\beta_il_j+\beta_jl_i+2\kappa(\beta_i+\beta_j)]/\Delta$, which equals
+$A(\beta_i/l_i+\beta_j/l_j)$ at $\kappa=0$ and tends to
+$2A(\beta_i+\beta_j)/(l_i+l_j)$ as $\kappa\to\infty$. It is independent of $\kappa$
+exactly when $l_i=l_j$. In that case
+$r_j-r_i=A(\beta_j-\beta_i)e^{-(l+2\kappa)t}$ and
+$D(t)=\frac{A(\beta_j-\beta_i)}{l+2\kappa}\bigl(1-e^{-(l+2\kappa)t}\bigr)$.
+
+\subsection{The slow-drive limit}
+
+\begin{proposition}\label{prop:flat}
+Fix $T>0$, $\kappa\neq0$ and $D(0)=0$, and let $l_i,l_j\to0$ with
+$\beta_i,\beta_j$ fixed. For both couplings,
+\[
+\rho(T;\kappa)\;\longrightarrow\;h(\theta)=\frac{1-e^{-\theta}}{\theta},
+\qquad\theta=2\kappa T,
+\]
+independently of the rate at which $l_i,l_j$ vanish and of $\beta_i,\beta_j$.
+\end{proposition}
+\begin{proof}
+For intake matching, $\gt(t)\to A(\beta_j-\beta_i)=:\gamma$ uniformly on $[0,T]$,
+so by \eqref{eq:voc}
+$D(T)\to\gamma\int_0^Te^{-2\kappa(T-s)}\,ds=\gamma(1-e^{-2\kappa T})/2\kappa$, while
+the uncoupled gap tends to $\gamma T$. For rate matching with $l_i=l_j=l$, the
+exact ratio is
+$\rho=\frac{l}{l+2\kappa}\cdot\frac{1-e^{-(l+2\kappa)T}}{1-e^{-lT}}$, and
+$1-e^{-lT}=lT+O((lT)^2)$ gives the same limit; unequal $l$ adds terms of order
+$(l_i-l_j)T$.
+\end{proof}
+
+$h$ is smooth on $\mathbb{R}$ with $h(0)=1$ (by continuity), and
+$h'(\theta)=\theta^{-2}[(1+\theta)e^{-\theta}-1]<0$ for $\theta\ne0$, since
+$(1+\theta)e^{-\theta}<1$ for all $\theta\neq0$; $h'(0)=-\tfrac12$. Hence $h$ is
+strictly decreasing on the whole real line, with $h>1$ for $\theta<0$ (divergence),
+$h\to\infty$ as $\theta\to-\infty$ and $h(\theta)\sim\theta^{-1}$ as
+$\theta\to\infty$. Every positive value of $h$ is attained exactly once.
+
+\paragraph{The two couplings are not separable in the mean at meal scale.} They
+share the slow-drive contraction factor. When $l_i=l_j$ they also share the total,
+since $(r_i+r_j)'=-l(r_i+r_j)$ under Eq.~(3) and the coupling cancels in Eq.~(1).
+The leading difference in the mean is $O((l_i-l_j)T)$. They may differ in the
+second moment of the gap (Section~\ref{sec:gap}).
+
+\subsection{The detectability ceiling}
+
+Let $\kappa=c\bar s$ with $\bar s\in[s_{\min},s_{\max}]$ and $q=s_{\max}/s_{\min}$,
+and let $\Sigma$ be the spread in the contraction factor across the scale. For the
+asymptotic factor $\rho=(1+\mu)^{-1}$, with $\mu=\kappa/l_h$ and
+$l_h^{-1}=l_i^{-1}+l_j^{-1}$,
+\[
+\Sigma(\mu)=\frac{1}{1+\mu}-\frac{1}{1+q\mu}=\frac{(q-1)\mu}{(1+\mu)(1+q\mu)} .
+\]
+Setting $\Sigma'=0$ gives $q(1+\mu)^2=(1+q\mu)^2$, hence $\sqrt q(1+\mu)=1+q\mu$ and
+$\mu_{\min}=q^{-1/2}$, at which $\Sigma^\star=(\sqrt q-1)/(\sqrt q+1)$. $\Sigma$ is
+unimodal, since $\Sigma(0)=\Sigma(\infty)=0$ and the stationary point is unique.
+For $h$ the optimum is at the unique positive root of $h'(\theta)=q\,h'(q\theta)$,
+found numerically.
+
+For $q=7$, $\Sigma^\star=0.451$ at $\mu_{\min}=0.378$, with $\rho$ running from
+0.726 to 0.274; for $h$, $\theta^\star=0.636$ and $\Sigma^\star=0.518$. Requiring at
+least half the maximal spread bounds the position of the bottom of the scale at
+$\theta_{\min}\in[0.116,3.14]$, a factor of 27. Main-text Table~1 gives the
+degradation under a baseline coupling.
+
+% =====================================================================
+\section{The per-dyad estimator}\label{sec:perdyad}
+
+\begin{proposition}\label{prop:estimator}
+In the slow-drive limit with $D(0)=0$, $\Gamma=\beta_j-\beta_i$ and
+$S=\beta_i+\beta_j$,
+\begin{equation}\label{eq:estimator}
+h(\theta)=\frac{\kj(T)-\ki(T)}{\ki(T)+\kj(T)}\cdot\frac{S}{\Gamma}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+By Proposition~\ref{prop:flat}, $\kj(T)-\ki(T)=A\Gamma T\,h(\theta)$; by Eq.~(2)
+in the same limit, $\ki(T)+\kj(T)=AST$. $A$ and $T$ cancel in the ratio.
+\end{proof}
+
+\subsection{Precision}
+
+Write $\hat h=a/b$ with $a=\hat S\,(\kj-\ki)/(\kj+\ki)$ and $b=\hat\Gamma$. The
+joint session and the solo sessions are independent, so $a$ and $b$ are
+independent apart from the weak dependence through $\hat S$. To first order,
+$a\approx h\Gamma+\delta_D/(AT)$ with $\mathrm{Var}(\delta_D)=\sigma_D^2$ from main-text
+Eq.~(7), plus terms of relative order $(\Gamma/S)^2$ from $\hat S$ and the total,
+which are negligible ($(\Gamma/S)^2\approx0.005$ at the FIC median contrast).
+Therefore
+\begin{equation}\label{eq:var}
+\mathrm{Var}(\hat h)\approx\frac{\mathrm{Var}(a)}{\Gamma^2}+\frac{h^2\,\mathrm{Var}(b)}{\Gamma^2}
+=\frac{\sigma_D^2}{(A\Gamma T)^2}+\frac{h^2}{\nu^2}=\frac{1}{\zeta^2},
+\qquad \nu=\frac{|\Gamma|}{\sigma_{\hat\Gamma}} .
+\end{equation}
+With $\sigma_o=0$, $\sigma_D^2=\phi AST$ does not depend on $h$, and
+$\mathrm{Var}(\hat h)\approx z_0^{-2}+h^2\nu^{-2}$ with $z_0=\Gamma\sqrt{AT/(\phi S)}$.
+If the $m$ solo sessions per person have the same length as the joint session and
+$A=1$, then $\nu^2=m z_0^2$ and $\mathrm{Var}(\hat h)\approx z_0^{-2}(1+h^2/m)$.
+
+By the delta method, $\mathrm{SD}(\hat\theta)\approx1/(\zeta|h'(\theta)|)$, and for a
+normal sampling distribution the IQR is $1.349$ standard deviations. At $\theta=1$,
+$|h'(1)|=1-2/e=0.264$, giving $\mathrm{IQR}(\hat\theta)\approx5.11/\zeta$. Simulation
+gives $5.23/\zeta$ (range 4.98 to 5.47 across cells with $\zeta>3$); the excess
+reflects the curvature of $h^{-1}$. We adopt $\zeta^\star=5.2$, at which the IQR of
+$\hat\theta$ equals $\theta=1$.
+
+\paragraph{Required session length.} Requiring $\zeta\ge\zeta^\star$ at
+$\theta_{\mathrm{ref}}$, with $h=h(\theta_{\mathrm{ref}})$ and the occasion term of
+main-text Eq.~(7),
+\begin{equation}\label{eq:Treq}
+T_{\mathrm{req}}=\frac{\phi S}{A\Gamma^2}\left[\frac{1}{\zeta^{\star2}}
+-\frac{h^2\sigma_{\hat\Gamma}^2}{\Gamma^2}-\frac{2h^2\sigma_o^2}{\Gamma^2}\right]^{-1},
+\end{equation}
+and no length suffices if the bracket is not positive. With unlimited baselines
+and $\sigma_o=0$, $T_{\mathrm{req}}=\zeta^{\star2}\phi S/(A\Gamma^2)$.
+
+\subsection{Moments, signs and intervals}
+
+The denominator $b=\hat\Gamma$ is a difference of two estimates. Under a normal
+approximation it has positive density at zero, so $\mathbb{E}|\hat h|=\infty$ at every
+$\nu$ (Hinkley, 1969; Marsaglia, 1965); with count data, $b=0$ has positive probability and
+$\hat h$ is undefined there. No value of $\nu$ makes the moments exist.
+What $\nu$ controls is the probability that $\hat\Gamma$ has the wrong sign,
+$\Phi(-\nu)$: 0.023 at $\nu=2$ and 0.0013 at $\nu=3$.
+
+The Fieller set for $h=a/b$ at level $1-\alpha$ is
+\[
+\{h:(a-hb)^2\le z_{\alpha/2}^2(v_a+h^2v_b)\},
+\]
+with $v_a,v_b$ the estimated variances of $a$ and $b$. It is a bounded interval
+exactly when $b^2>z_{\alpha/2}^2v_b$, that is when $\hat\nu>1.96$ at the 95\% level.
+Otherwise it is unbounded, which correctly reports that the dyad's data do not
+bound $h$. In simulation, 95\% Fieller sets covered at 0.94 to 0.97 in every cell
+without occasion variance.
+
+\subsection{Why truncation and filtering bias toward coupling}
+
+Under $\kappa=0$, $\hat h$ is centered near 1 and, at low $\zeta$, spreads widely to
+both sides. Retaining only $0<\hat h<1$ discards the upper half of the null
+distribution and every negative value. Every retained estimate maps to
+$\hat\theta>0$, so the retained median is positive however large the sample. The
+remedy is to invert over the whole real line, using $h$ extended to $\theta<0$ and
+$\hat\theta=+\infty$ for $\hat h\le0$, and to summarize with order statistics or
+Fieller sets.
+
+Retaining only dyads with $\hat\nu\ge\nu_0$ conditions on $|\hat\Gamma|$ being large.
+For a dyad of fixed true contrast near the threshold, this selects replicates in
+which $|\hat\Gamma|>|\Gamma|$. The retained $\hat h=a/b$ then has an inflated
+denominator and is biased toward 0, which reads as coupling: regression to the
+mean (Barnett et al., 2005). The bias disappears if selection
+uses sessions independent of those entering $\hat\Gamma$.
+
+% =====================================================================
+\section{Sampling variability of the gap}\label{sec:gap}
+
+\paragraph{Dispersion.} For a counting process with dispersion $\phi$,
+$\mathrm{Var}(k(T))\approx\phi\,\mathbb{E}k(T)$. For a stationary renewal process,
+$\phi$ tends to the squared coefficient of variation of the inter-event intervals
+(Cox, 1962); $\phi<1$ for processes more regular than Poisson, such as bites
+separated by chewing. Independent counts for the two diners give
+$\mathrm{Var}(D)=\phi(N_i+N_j)$, which at the FIC mean of 63.4 bites per meal is
+$11.3^2$ for $\phi=1$ and $9.4^2$ for $\phi=0.7$. These are benchmarks, not floors.
+
+\paragraph{Occasion variance.} If a person's rate on a given occasion is
+$\beta+\varepsilon$ with $\varepsilon\sim N(0,\sigma_o^2)$ independent across
+occasions, the slow-drive gap is $D=AhT(\Gamma+\varepsilon_j-\varepsilon_i)$ plus
+counting noise. Then
+\[
+\sigma_D^2=\phi AST+2A^2h^2\sigma_o^2T^2 ,
+\]
+and the gap signal-to-noise ratio at $h=1$ is bounded by $\Gamma/(\sqrt2\,\sigma_o)$
+for every $T$. The baseline contrast from $m$ sessions of length $T_s$ has
+variance $(\phi S/T_s+2\sigma_o^2)/m$.
+
+\paragraph{Coupling on realized events.} The simulations draw each diner's counts
+independently given the deterministic means of main-text Eq.~(9). Suppose instead
+that the coupling acts on realized counts, so that in a stochastic version of
+Eq.~(1) the gap obeys, approximately,
+\[
+dD=(\gt-2\kappa D)\,dt+dM,
+\]
+where $M$ is a martingale with quadratic variation $\phi\lambda t$ and $\lambda$ is
+the combined bite rate. In the slow-drive limit this is an Ornstein--Uhlenbeck
+process, and
+\[
+\mathrm{Var}\,D(T)=\phi\lambda\int_0^Te^{-4\kappa(T-s)}\,ds=\phi\lambda T\,h(4\kappa T)=\phi\lambda T\,h(2\theta),
+\]
+which is smaller than $\phi\lambda T$ whenever $\kappa>0$. This is a diffusion
+approximation and is not used in any result. It implies that the per-dyad
+requirements are conservative for coupled dyads and exact under the null. It also
+implies that the variance of the gap carries information about $\kappa$ even when
+$\Gamma=0$, and that the two couplings may differ in this second moment.
+
+% =====================================================================
+\section{The pooled estimator}\label{sec:pooled}
+
+\subsection{Model}
+
+In the slow-drive limit of main-text Eq.~(9), each diner's intake is an
+actor--partner combination of the two baselines, with actor effect $(1+h)/2$ and
+partner effect $(1-h)/2$. For dyad $d$, with arbitrary labeling of $i$ and $j$,
+define
+\[
+y_d=\hat S_d\,\frac{\kj-\ki}{\kj+\ki},\qquad
+x_d=\hat\Gamma_d=\hat\beta_j-\hat\beta_i,\qquad
+v_d=\frac{s_i^2+s_j^2}{m},
+\]
+where $\hat\beta$ is the mean of a person's $m$ per-session rates and $s^2$ their
+sample variance. Then, to first order,
+\[
+y_d=h\Gamma_d+e_d,\qquad x_d=\Gamma_d+u_d,\qquad \mathbb{E}\,v_d=\mathrm{Var}(u_d),
+\]
+with $e_d$, $u_d$ and $\Gamma_d$ mutually independent and
+\[
+\sigma_e^2=\frac{\phi S}{AT}+2h^2\sigma_o^2,\qquad
+\sigma_u^2=\frac{1}{m}\Bigl(\frac{\phi S}{T_s}+2\sigma_o^2\Bigr).
+\]
+$A$ and $T$ cancel from $y_d$, so neither needs to be estimated. Unbiasedness of
+$v_d$ follows from $\mathbb{E}s^2=\sigma_o^2+\phi\beta/T_s$ for each person.
+
+\subsection{Estimator and its variance}
+
+The method-of-moments estimator solves $\sum_d\psi_d(h)=0$ with
+$\psi_d(h)=y_dx_d-h(x_d^2-v_d)$:
+\[
+\hat h_{\mathrm{pool}}=\frac{\sum_dy_dx_d}{\sum_d(x_d^2-v_d)} .
+\]
+$\mathbb{E}\psi_d(h)=h\,\mathbb{E}\Gamma^2-h(\mathbb{E}\Gamma^2+\sigma_u^2-\sigma_u^2)=0$,
+so the estimator is consistent. Its sandwich variance estimate is
+$\sum_d\hat\psi_d^2/\bigl(\sum_d(x_d^2-v_d)\bigr)^2$ (Stefanski \& Boos, 2002). In small
+samples, replace $\hat\psi_d$ by $\hat\psi_d/(1-\ell_d)$ with leverage
+$\ell_d=(x_d^2-v_d)/\sum_d(x_d^2-v_d)$, the analogue of HC3 for least squares
+(MacKinnon \& White, 1985); Section~\ref{sec:robust} shows that this restores
+nominal size down to 20 dyads per group.
+
+For the large-sample variance, write $\overline{\Gamma^2}=\mathbb{E}\Gamma^2$ and take
+$\Gamma$ symmetric (random labels), $u$ normal, and $v$ independent of $u$, which
+holds for normal per-session rates. Expanding,
+\begin{align*}
+\mathrm{Var}(y x)&=h^2\mathrm{Var}(\Gamma^2)+h^2\overline{\Gamma^2}\sigma_u^2+\sigma_e^2(\overline{\Gamma^2}+\sigma_u^2),\\
+\mathrm{Var}(x^2-v)&=\mathrm{Var}(\Gamma^2)+4\overline{\Gamma^2}\sigma_u^2+2\sigma_u^4+\mathrm{Var}(v),\\
+\mathrm{Cov}(yx,\,x^2-v)&=h\,\mathrm{Var}(\Gamma^2)+2h\overline{\Gamma^2}\sigma_u^2,
+\end{align*}
+with $\mathrm{Var}(v)=\sigma_u^4/(m-1)$ for equal per-person variances. Then
+$\mathrm{Var}\,\psi=\mathrm{Var}(yx)+h^2\mathrm{Var}(x^2-v)-2h\,\mathrm{Cov}(yx,x^2-v)$, in
+which $\mathrm{Var}(\Gamma^2)$ cancels:
+\[
+\mathrm{Var}\,\psi=\sigma_e^2(\overline{\Gamma^2}+\sigma_u^2)+h^2\overline{\Gamma^2}\sigma_u^2
++h^2\sigma_u^4\Bigl(2+\frac{1}{m-1}\Bigr).
+\]
+With $\mathbb{E}\,\partial\psi/\partial h=-\overline{\Gamma^2}$, the large-sample
+variance over $n$ dyads is
+\begin{equation}\label{eq:pooledvar}
+\mathrm{Var}(\hat h_{\mathrm{pool}})\approx\frac{\mathrm{Var}\,\psi}{n\,(\overline{\Gamma^2})^2},
+\end{equation}
+main-text Eq.~(11). Heterogeneity in contrasts across dyads does not inflate it;
+only their mean square enters. For a two-group comparison the test statistic is
+$(\hat h_1-\hat h_2)/\sqrt{\widehat{\mathrm{se}}_1^2+\widehat{\mathrm{se}}_2^2}$, and
+power at difference $\Delta h$ is
+$\Phi(|\Delta h|/\mathrm{SE}-z_{\alpha/2})+\Phi(-|\Delta h|/\mathrm{SE}-z_{\alpha/2})$.
+In simulation \eqref{eq:pooledvar} predicted power to within 0.032 for $m\ge4$ and
+$n\ge50$ per group.
+
+If coupling varies across dyads, $\hat h_{\mathrm{pool}}$ converges to
+$\mathbb{E}[h_d\Gamma_d^2]/\mathbb{E}[\Gamma_d^2]$, a contrast-weighted mean.
+
+\begin{remark}
+The derivation assumes the slow-drive model, normal per-session rates and
+independent counts, and the simulations reported in the main text use the same
+assumptions. Their agreement with \eqref{eq:pooledvar} checks the large-sample
+approximation under the model. Section~\ref{sec:robust} examines small samples,
+skewed rates, a decaying drive, heterogeneous coupling and differential facilitation,
+and Section~\ref{sec:facil} facilitation that differs between groups and pre-existing
+pairs; coupling on realized events is not examined.
+\end{remark}
+
+\subsection{Pairing schemes}
+
+For random pairing from a population with between-person standard deviation
+$\sigma_p$, $\Gamma\sim N(0,2\sigma_p^2)$, so $\overline{\Gamma^2}=2\sigma_p^2$ and the
+median $|\Gamma|$ is $0.954\,\sigma_p$.
+
+For pairing opposite terciles of a screening session with reliability
+$R=\sigma_p^2/(\sigma_p^2+\sigma_o^2+\phi\mu/T_{\mathrm{scr}})$, where $\mu$ is the
+mean rate, write $\beta-\mu=R(X-\mu)+w$ with $X$ the screening rate and
+$w\sim N(0,\sigma_p^2(1-R))$ independent of $X$. For a standard normal $Z$ above
+its upper tercile point, $\mathbb{E}Z=k=1.0909$ and $\mathrm{Var}Z=v_t=0.2800$. Hence
+$\mathbb{E}[\beta-\mu\mid\text{top}]=k\sqrt R\,\sigma_p$ and
+$\mathrm{Var}[\beta\mid\text{top}]=\sigma_p^2(1-(1-v_t)R)$, and symmetrically for the
+bottom tercile. So the mean contrast is $2k\sqrt R\,\sigma_p=2.18\sqrt R\,\sigma_p$
+and
+\[
+\overline{\Gamma^2}=2\sigma_p^2\bigl(1-(1-v_t)R\bigr)+4k^2R\,\sigma_p^2
+=\sigma_p^2(2+3.32R).
+\]
+The screening session must be independent of the baseline sessions: selecting on
+the baselines themselves makes $u_d$ correlated with selection and biases the
+estimator, as in Section~\ref{sec:perdyad}.
+
+\subsection{Alternatives}
+
+\paragraph{Instrumental variables.} Split each person's solo sessions into halves
+with contrasts $x^{(1)}_d,x^{(2)}_d$, each with error variance $2\sigma_u^2$, and use
+$\hat h_{\mathrm{IV}}=\sum y_dx^{(1)}_d/\sum x^{(2)}_dx^{(1)}_d$. With
+$\psi=(y-hx^{(2)})x^{(1)}=(e-hu^{(2)})(\Gamma+u^{(1)})$,
+\[
+\mathrm{Var}(\hat h_{\mathrm{IV}})\approx\frac{(\sigma_e^2+2h^2\sigma_u^2)(\overline{\Gamma^2}+2\sigma_u^2)}{n(\overline{\Gamma^2})^2},
+\]
+which always exceeds \eqref{eq:pooledvar}. It does not require normality of the
+per-session rates.
+
+\paragraph{Naive least squares.}
+$\hat h_{\mathrm{OLS}}=\sum y_dx_d/\sum x_d^2\to h\,\overline{\Gamma^2}/(\overline{\Gamma^2}+\sigma_u^2)$,
+attenuated by the reliability of $\hat\Gamma$ (Fuller, 1987). Under $h=1$ this is
+below 1, which reads as coupling. In simulation its null medians ranged from 0.50
+to 0.97.
+
+% =====================================================================
+\section{Recommended protocol}
+
+\begin{enumerate}
+\item \emph{Size the study first.} Using pilot or published estimates of the mean
+rate, the stable and occasion standard deviations of individual rates, and the
+dispersion of the event process, compute the pooled sample size
+(\texttt{pooled\_n}) and, if per-dyad estimates are of interest, the per-dyad
+signal-to-noise ratio (\texttt{per\_dyad\_check}). Because these inputs are
+uncertain, evaluate the sample size across a plausible range of them (main-text
+Table~3C) and at the contrast in $h$ expected between groups, not only at
+$\theta=0$ versus $\theta=1$. If the stable and occasion components are not known,
+measure them first: with half the variation occasional, about 50 people with four
+solo meals each estimate the occasion share to within about 0.2
+(Section~\ref{sec:pilot}).
+\item \emph{Solo sessions.} Record at least four solo sessions per participant
+under conditions matching the joint session, and of the same length as the joint
+session (Section~\ref{sec:robust}). Use the per-session rates for the
+baseline (their mean) and for its error variance (their sample variance divided
+by $m$). Report the stable and occasion variance components (a one-way
+random-effects decomposition of per-session rates, net of counting variance).
+\item \emph{Pairing.} Pair at random, or screen for contrasting rates using a
+session that does not enter the baselines. If closeness groups consist of existing
+pairs, which can be neither, measure the correlation of partners' solo rates and
+use it in sizing (\texttt{pairing="existing"}).
+\item \emph{Joint session.} Record event counts for both partners. $A$ and $T$ need
+not be estimated, since both cancel.
+\item \emph{Primary analysis.} Estimate $h$ per closeness group with
+$\hat h_{\mathrm{pool}}$, with leverage-corrected sandwich or dyad-bootstrap
+standard errors, and compare groups. Interpret the absolute level of
+$\hat h_{\mathrm{pool}}$ only relative to the comparison group, since differential
+facilitation can move it in either direction. Report the partner-effect test
+(Section~\ref{sec:facil}) alongside: it does not need facilitation to be equal
+across groups. A regression of $y_d$ on $x_d$ and $x_d\times$closeness, with the
+same errors-in-variables correction, generalizes this to a continuous moderator.
+\item \emph{Per-dyad estimates, if reported.} Report them descriptively with
+Fieller intervals and with $\zeta$. Do not truncate at $\hat h=1$, and do not
+select dyads on the baselines that enter the estimate.
+\end{enumerate}
+
+% =====================================================================
+\section{Worked example with \texttt{couplingdx}}
+
+The package has no dependencies. It installs from the repository with
+\begin{verbatim}
+pip install "git+https://github.com/markizgarshev90-ops/couplingdx#subdirectory=couplingdx"
+\end{verbatim}
+or with \texttt{pip install .} from its folder. The values below are those of the
+main text: mean bite rate $0.0867\,\mathrm{s}^{-1}$ per person, between-meal
+standard deviation $0.0130\,\mathrm{s}^{-1}$, dispersion 0.7, 12-minute (740\,s)
+meals.
+
+\paragraph{Can a single dyad be estimated?}
+\begin{verbatim}
+>>> import couplingdx as c
+>>> G = c.expected_contrast(0.0130)          # median contrast, random pairs
+>>> round(G, 4)
+0.0124
+>>> print(c.per_dyad_check(contrast=G, rate_total=2*0.0867, duration=740,
+...                        n_baseline=8, baseline_session=740, dispersion=0.7))
+Per-dyad coupling estimate
+========================================
+  gap signal-to-noise      z0   =    0.97
+  baseline contrast ratio  nu   =    2.74   (P sign error = 0.003)
+  combined                 zeta =    0.94   (need >= 5.2)
+
+  NOT FEASIBLE per dyad: theta_hat would be less precise than theta itself.
+  required joint-session length: none suffices
+
+Notes:
+  - baseline precision alone rules out the target: more or longer
+    baseline sessions are needed before joint-session length matters.
+  - never discard estimates with h_hat >= 1, and never select dyads on
+    the same baselines used in the estimate: both bias toward coupling.
+\end{verbatim}
+
+\paragraph{How long would the meal have to be?}
+\begin{verbatim}
+>>> c.required_duration(G, 2*0.0867, 0.7) / 3600          # unlimited baselines
+5.93
+>>> Gs = c.expected_contrast(0.0130, "screened", mean_rate=0.0867,
+...                          dispersion=0.7, screen_duration=740)
+>>> c.required_duration(Gs, 2*0.0867, 0.7, n_baseline=8,
+...                     baseline_session=740) / 60             # minutes
+171
+\end{verbatim}
+
+\paragraph{How many dyads does the pooled estimator need?}
+\begin{verbatim}
+>>> d = dict(duration=740, n_baseline=4, baseline_session=740,
+...          mean_rate=0.0867, between_sd=0.0130, dispersion=0.7)
+>>> c.pooled_n(0.8, **d)                                   # theta 0 vs 1
+76
+>>> c.pooled_n(0.8, **dict(d, between_sd=0.0130/2**0.5, occasion_sd=0.0130/2**0.5))
+376
+>>> c.pooled_n(0.8, **dict(d, pairing="screened"))
+34
+>>> c.pooled_n(0.8, **d,              # close group made of existing pairs
+...            high_design=dict(pairing="existing", partner_correlation=0.3))
+94
+\end{verbatim}
+
+\paragraph{From the command line.}
+\begin{verbatim}
+$ couplingdx pooled --mean-rate 0.0867 --between-sd 0.013 --duration 740 \
+      --n-baseline 4 --baseline-session 740 --dispersion 0.7
+Pooled estimator, theta 0 vs 1, two-sided 5% test
+  dyads per group for power 0.80: 76
+  power at   50 per group: 0.624
+  power at  100 per group: 0.896
+  power at  200 per group: 0.995
+  power at  400 per group: 1.000
+\end{verbatim}
+
+\paragraph{Fitting the estimator.} Each dyad is given as its two members'
+per-session solo rates and their joint-session counts, and each closeness group is
+fitted separately:
+\begin{verbatim}
+>>> dyad = ([0.081, 0.090, 0.077, 0.085],   # solo rates, person i (bites/s)
+...         [0.102, 0.095, 0.110, 0.099],   # solo rates, person j
+...         66, 73)                          # joint-session counts, i and j
+>>> fit_close = c.fit_pooled(dyads_close)        # list of such tuples
+>>> fit_strangers = c.fit_pooled(dyads_strangers)
+>>> c.compare_groups(fit_close, fit_strangers)   # diff, se, z, p
+\end{verbatim}
+The script \texttt{pooled\_fit.py} in the repository simulates 300 dyads
+at $\theta=1$ and prints
+\begin{verbatim}
+h_pool = 0.612 (SE 0.047; 95% CI 0.519 to 0.704), theta = 1.08, n = 300 dyads
+\end{verbatim}
+\texttt{fit\_pooled} uses the leverage-corrected standard error by default and
+refuses to return an estimate if the corrected denominator is not clearly positive.
+The partner-effect test of Section~\ref{sec:facil} takes the same dyads and the
+joint-session length:
+\begin{verbatim}
+>>> print(c.fit_partner_effect(dyads_close, duration=740))
+\end{verbatim}
+
+Below about 50 dyads per group the large-sample formula overstates power by up to
+0.07 (Section~\ref{sec:robust}); such designs, and designs with departures not
+covered there, should be checked by simulation, for which
+\texttt{robustness\_sim.py} can be adapted.
+
+% =====================================================================
+\section{Robustness of the pooled estimator}\label{sec:robust}
+
+The simulations of main-text Figure~4 generate data under the assumptions of
+Eq.~\eqref{eq:pooledvar}. Table~\ref{tab:robust} reports a second set that departs
+from them one at a time. Unless stated, each cell has two groups of 100 dyads
+($\theta=0$ and $\theta=1$), 12-minute joint and solo sessions ($T=T_s=740$\,s), $m=4$
+solo sessions, random pairing, $\phi=0.7$, mean rate $0.0867\,\mathrm{s}^{-1}$ and
+$\sigma_b=0.0130\,\mathrm{s}^{-1}$, all stable; 4{,}000 replicates per cell; and the
+leverage-corrected (HC3) standard error of main-text Method. The code is
+\texttt{robustness\_sim.py} in the repository.
+
+\begin{description}\itemsep2pt
+\item[R1, small samples.] 20 or 30 dyads per group, random or screened pairing. With
+the plain sandwich (HC0) the null rejection rates were 0.087 at 20 and 0.073 at 30
+dyads per group (6{,}000 replicates; \texttt{hc\_comparison.py}); HC3 divides each score by $1-\ell_d$, $\ell_d=(x_d^2-v_d)/\sum_d(x_d^2-v_d)$.
+\item[R2, skewed rates.] Stable rates lognormal with the same mean and standard
+deviation; occasion effects a centered gamma variable with shape 2 (skewness 1.4).
+\item[R3, decaying drive.] All sessions generated from the exact solution of main-text
+Eq.~(1), Eq.~\eqref{eq:solution}, with $l_p\sim U(0,l_{\max})$ independently per
+person; solo rates computed as count divided by session length, as an analyst would.
+\item[R4, heterogeneous coupling.] $\theta_d\sim\mathrm{Gamma}(\text{shape }2,
+\text{scale }0.5)$ in the coupled group. The target is the contrast-weighted mean
+$\mathbb{E}[h_d\Gamma_d^2]/\mathbb{E}[\Gamma_d^2]$ (Section~\ref{sec:pooled}), and
+95\% intervals covered it in 0.940 of replicates.
+\item[R5, differential facilitation.] $A_p=1.1\,(1+\delta z_p)$, with $z_p$ the
+person's standardized solo rate, applied in both groups.
+\end{description}
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Robustness of the pooled estimator. Medians of $\hat h_{\mathrm{pool}}$ in
+the uncoupled ($\theta=0$) and coupled ($\theta=1$) groups, with the target in
+parentheses; coverage of $h=1$ by 95\% intervals in the uncoupled group; null
+rejection rate of the two-group test (size); power; and the power predicted by
+main-text Eq.~(11). Monte Carlo standard errors are about 0.003 for
+size and at most 0.008 for power.}\label{tab:robust}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+& & \multicolumn{2}{c}{Uncoupled, $\theta=0$} & Coupled, $\theta=1$ & \multicolumn{3}{c}{Two-group test}\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-5}\cmidrule(l){6-8}
+Scenario & $n$ & Med.\ $\hat h$ & Cover & Med.\ $\hat h$ (target) & Size & Power & Formula\\
+\midrule
+Model as assumed & 100 & 1.000 & 0.944 & 0.633 (0.632) & 0.051 & 0.886 & 0.896\\
+R1: 20 dyads per group & 20 & 1.004 & 0.940 & 0.636 (0.632) & 0.050 & 0.255 & 0.302\\
+R1: 30 dyads per group & 30 & 1.006 & 0.936 & 0.636 (0.632) & 0.051 & 0.373 & 0.422\\
+R1: 20 dyads, screened & 20 & 1.001 & 0.932 & 0.639 (0.632) & 0.050 & 0.513 & 0.583\\
+R2: normal, half occasional & 300 & 1.012 & 0.953 & 0.637 (0.632) & --- & 0.696 & 0.707\\
+R2: skewed, half occasional & 300 & 1.009 & 0.955 & 0.636 (0.632) & 0.046 & 0.718 & 0.707\\
+R2: skewed, all stable & 100 & 1.001 & 0.951 & 0.633 (0.632) & --- & 0.868 & 0.896\\
+R3: $l_{\max}=2.4\times10^{-4}$ & 100 & 1.000 & 0.943 & 0.632 (0.632) & 0.048 & 0.866 & 0.896\\
+R3: $l_{\max}=5\times10^{-4}$, $T=T_s=740$ & 100 & 1.002 & 0.951 & 0.638 (0.632) & --- & 0.883 & 0.896\\
+R3: $l_{\max}=5\times10^{-4}$, $T=T_s=3000$ & 100 & 1.001 & 0.941 & 0.668 (0.632) & --- & 1.000 & 1.000\\
+R3: $l_{\max}=5\times10^{-4}$, $T=3000$, $T_s=740$ & 100 & 1.269 & 0.266 & 0.803 (0.632) & 0.045 & 0.933 & 1.000\\
+R3: no decay, $T=3000$, $T_s=740$ & 100 & 1.003 & 0.945 & 0.633 (0.632) & --- & 0.999 & 1.000\\
+R4: $\theta_d\sim\mathrm{Gamma}(2,0.5)$ & 100 & 1.001 & 0.943 & 0.669 (0.667) & --- & 0.792 & 0.896\\
+R5: $\delta=-0.05$ & 100 & 0.674 & 0.024 & 0.427 (0.632) & 0.045 & 0.621 & 0.896\\
+R5: $\delta=+0.05$ & 100 & 1.322 & 0.032 & 0.834 (0.632) & 0.054 & 0.980 & 0.896\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three results matter for design. First, HC3 is needed below about 50 dyads per
+group, and the formula then overstates power by up to 0.07. Second, decay is
+harmless at the rates FIC allows and remains harmless under the null at twice
+those rates, provided solo and joint sessions have equal length. With unequal
+lengths it biases $\hat h_{\mathrm{pool}}$ strongly, although the between-group test
+keeps its size. Third, differential facilitation and heterogeneous coupling bias
+$\hat h_{\mathrm{pool}}$, or reduce its power, without affecting the size of a
+comparison between groups that share them. The absolute level of
+$\hat h_{\mathrm{pool}}$ should therefore be interpreted only relative to a
+comparison condition. Section~\ref{sec:facil} examines facilitation that differs
+between groups, and groups made of pre-existing pairs.
+
+
+% =====================================================================
+\section{Facilitation that differs between groups, the partner-effect test, and pre-existing pairs}\label{sec:facil}
+
+\paragraph{Design.} Each cell has 100 dyads per group and 4{,}000 replicates, with the
+settings of Section~\ref{sec:robust} and $A_p=1.1\,(1+\delta z_p)$. In R6 the
+strangers have $\delta=0$ and the close group $\delta=\pm0.05$. In R7 the close group
+consists of pre-existing pairs whose stable rates are bivariate normal with
+correlation $\rho$, and the strangers are paired at random. In the
+contrast-dependent case both groups follow the same rule,
+$\theta_d=2\exp(-|\Gamma_d|/\mathbb{E}|\Gamma|)$ with $\mathbb{E}|\Gamma|$ taken over
+random pairs, so that more similar pairs couple more. The code is
+\texttt{revision\_sims.py} in the repository.
+
+\paragraph{The partner-effect test.} Without the constraint that the actor and
+partner effects sum to one, the slow-drive intakes are
+\begin{equation}\label{eq:apimfree}
+\frac{\ki(T)}{T}=\frac{1+h}{2}A_i\beta_i+\frac{1-h}{2}A_j\beta_j ,
+\end{equation}
+with $A_p$ allowed to depend on the person. Each diner's joint-session rate is
+regressed on their own and their partner's baseline, with an intercept, by the
+method of moments: the summed replicate variances $\sum v$ are subtracted from the
+diagonal of the moment matrix of the centered baselines, as in
+Section~\ref{sec:pooled}. Both members of a dyad enter as rows, and the standard
+error of the partner coefficient comes from deleting one dyad at a time.
+
+Under $\kappa=0$ a diner's joint-session rate depends on their own rate only,
+$A_i\beta_i=f(\beta_i)$ for some function $f$. Its coefficient on the partner's rate,
+in a linear regression on both rates, is zero whenever $\mathbb{E}[\beta_j\mid\beta_i]$
+is linear in $\beta_i$, because the part of $f(\beta_i)$ that is not linear in
+$\beta_i$ is then uncorrelated with $\beta_j$. This holds for random pairing, where
+$\beta_j$ is independent of $\beta_i$, and for pre-existing pairs with jointly
+normal rates at any correlation. Under coupling the partner coefficient is
+$(1-h)/2$ times the slope of $A_j\beta_j$ in $\beta_j$, which is $A(1-h)/2$ when $A$
+is constant. A gradient $\delta$ multiplies that slope by about
+$1+\delta\mu/\sigma_p$ near the mean rate, 1.33 for $\delta=0.05$ at the FIC
+values, which is why the power of the test depends on $\delta$
+(Table~\ref{tab:facil}).
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Facilitation that differs between groups (R6), 100 dyads per group.
+A: rejection rates of the between-group test of $h$ (pooled estimator), of the
+between-group difference in partner effects, and of the partner-effect test in
+the close group alone, with no coupling in either group ($\theta=0$) and with
+$\theta=1$ in the close group. B: the partner-effect test in one group, its median
+estimate, its target $A(1-h)/2$ with $A=1.1$, and its rejection rate.}\label{tab:facil}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Pooled $h$, groups} & \multicolumn{2}{c}{Partner, groups} & \multicolumn{2}{c}{Partner, close}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+A. Scenario & $\theta=0$ & $\theta=1$ & $\theta=0$ & $\theta=1$ & $\theta=0$ & $\theta=1$\\
+\midrule
+Close group only, $\delta=-0.05$ & 0.826 & 0.999 & 0.045 & 0.349 & 0.050 & 0.638\\
+Close group only, $\delta=+0.05$ & 0.749 & 0.324 & 0.052 & 0.827 & 0.055 & 0.984\\
+\bottomrule
+\end{tabular}
+
+\vspace{6pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+B. Scenario & Median & Target & Rejection\\
+\midrule
+Random pairing, $\delta=-0.05$, $\theta=0$ & 0.002 & --- & 0.055\\
+Random pairing, $\delta=+0.00$, $\theta=0$ & 0.000 & --- & 0.052\\
+Random pairing, $\delta=+0.05$, $\theta=0$ & 0.002 & --- & 0.052\\
+Screened pairing, $\delta=-0.05$, $\theta=0$ & 0.002 & --- & 0.050\\
+Screened pairing, $\delta=+0.00$, $\theta=0$ & 0.002 & --- & 0.045\\
+Screened pairing, $\delta=+0.05$, $\theta=0$ & 0.002 & --- & 0.047\\
+Random pairing, $\delta=0$, $\theta=0.5$ & 0.118 & 0.117 & 0.474\\
+Random pairing, $\delta=0$, $\theta=1$ & 0.204 & 0.202 & 0.907\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Closeness groups made of pre-existing pairs (R7), 100 dyads per group;
+strangers are paired at random. Rejection rate of the between-group test with no
+coupling in either group (or, for coupling that falls with contrast, with the same
+rule in both groups), its power at $\theta=1$ in the close group, the power from
+main-text Eq.~(11) with mean squared contrast $2\sigma_p^2(1-\rho)$
+in the close group, and the median estimate in the close group: $\hat h_{\mathrm{pool}}$
+(strangers in parentheses), or the partner effect for the partner-effect test,
+which has $\theta=0$.}\label{tab:existing}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Scenario & Rejection, null & Power & Formula & Median estimate\\
+\midrule
+Constant coupling, $\rho=0.3$ & 0.060 & 0.791 & 0.826 & 0.632\\
+Constant coupling, $\rho=0.6$ & 0.052 & 0.601 & 0.645 & 0.635\\
+Coupling falls with contrast, $\rho=0.3$ & 0.058 & --- & --- & 0.813 (0.848)\\
+Coupling falls with contrast, $\rho=0.6$ & 0.088 & --- & --- & 0.748 (0.847)\\
+Partner-effect test, $\rho=0.3$, $\delta=0.00$ & 0.049 & --- & --- & 0.002\\
+Partner-effect test, $\rho=0.3$, $\delta=0.05$ & 0.055 & --- & --- & -0.001\\
+Partner-effect test, $\rho=0.6$, $\delta=0.00$ & 0.052 & --- & --- & -0.003\\
+Partner-effect test, $\rho=0.6$, $\delta=0.05$ & 0.053 & --- & --- & -0.001\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+With constant coupling, correlated partners cost power but not size. When coupling
+falls with the pair's contrast, the close group's more similar pairs couple more on
+average ($\bar\theta=1.02$ at $\rho=0.3$ and $1.17$ at $\rho=0.6$, against $0.92$
+among strangers), so a difference between the groups appears that closeness did not
+cause.
+
+% =====================================================================
+\section{Group-level tests on per-dyad estimates}\label{sec:rank}
+
+Two groups of randomly paired dyads were simulated with 12-minute joint and solo
+sessions, $m=4$, $\phi=0.7$, and all between-meal variation stable
+($\sigma_p=0.0130\,\mathrm{s}^{-1}$) or half occasional, 2{,}000 replicates per cell.
+Per-dyad estimates from Eq.~(\ref{eq:estimator}) were not truncated; a dyad whose
+estimated contrast was exactly zero, which is rare, was given $\hat h=0$. The groups
+were compared with a two-sided Mann--Whitney test and, on the same data, with the
+pooled estimator.
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Rank test on untruncated per-dyad estimates against the pooled estimator:
+rejection rates with $\theta=0$ in both groups (size) and $\theta=0$ against
+$\theta=1$ (power), and the median per-dyad $\hat h$ in a group with no coupling.}\label{tab:rank}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+& & \multicolumn{2}{c}{Rank test} & \multicolumn{2}{c}{Pooled} & \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Variance & Dyads & Size & Power & Size & Power & Median $\hat h$, $\theta=0$\\
+\midrule
+All stable & 50 & 0.051 & 0.229 & 0.051 & 0.571 & 0.89\\
+ & 100 & 0.057 & 0.422 & 0.048 & 0.869 & 0.89\\
+ & 200 & 0.041 & 0.705 & 0.053 & 0.990 & 0.88\\
+ & 400 & 0.041 & 0.944 & 0.042 & 1.000 & 0.89\\
+Half occasional & 50 & 0.049 & 0.101 & 0.035 & 0.133 & 0.65\\
+ & 100 & 0.061 & 0.148 & 0.041 & 0.292 & 0.66\\
+ & 200 & 0.050 & 0.233 & 0.039 & 0.509 & 0.66\\
+ & 400 & 0.049 & 0.398 & 0.043 & 0.806 & 0.66\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The rank test held its size. At the power levels that matter it needed about three
+times as many dyads as the pooled estimator: the power it reached with 400 dyads per
+group, the pooled estimator reached with about 130. Under no coupling the median
+per-dyad estimate was well below 1. For a dyad whose true contrast is small,
+$\hat h$ is close to a ratio of two independent noise terms, whose median is zero,
+and such dyads pull the median of a randomly paired population below 1.
+
+% =====================================================================
+\section{What the time course adds}\label{sec:timecourse}
+
+In the slow-drive limit, with $\Gamma_o$ the contrast on the joint occasion
+(including occasion shifts and facilitation),
+$D(T/2)=\Gamma_o(T/2)\,h(\theta/2)$ and
+\begin{equation}\label{eq:halves}
+D(T)-D(T/2)=e^{-\theta/2}D(T/2),\qquad \frac{D(T)}{D(T/2)}=1+e^{-\theta/2}.
+\end{equation}
+Let $D_1$ be the gap at half-time, $D_2$ the change in the gap over the second
+half, and $N_1$ the two diners' bites in the first half. If the counts in the two
+halves are independent given the drive, with variance $\phi$ times their mean, then
+$\mathbb{E}[D_1D_2]=e^{-\theta/2}\,\mathbb{E}[D_1^2-\phi N_1]$, and
+\[
+\hat\varrho=\frac{\sum_dD_{1d}D_{2d}}{\sum_d\bigl(D_{1d}^2-\phi N_{1d}\bigr)},\qquad
+\hat\theta=-2\log\hat\varrho ,
+\]
+with a leverage-corrected sandwich standard error as in Section~\ref{sec:pooled}.
+It needs no solo sessions, and an occasion shift in the joint session is part of
+$\Gamma_o$ rather than noise. It does need $\phi$ for counts over half a meal.
+
+The simulations follow Section~\ref{sec:robust}, with the counts of each half drawn
+separately. The departures were: half-meal counts with dispersion 0.9 analyzed with
+0.7; a change in rate between the halves shared by both diners and varying across
+dyads (mean $+4\%$, standard deviation 10\% on the log scale), in the joint session
+only; faster eaters slowing by 5\% more per standard deviation of their rate in the
+second half, in solo and joint sessions alike; and a decaying drive.
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Pooled half-meal estimator against the end-of-meal estimator, 12-minute
+meals, $m=4$ solo meals for the end-of-meal estimator. A: median $\hat\varrho$ under
+no coupling (target 1) and at $\theta=1$ (target 0.607), and rejection rates of
+both two-group tests. B: departures, 100 dyads per group; median estimate under no
+coupling and rejection rates.}\label{tab:timecourse}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+& & \multicolumn{4}{c}{Half-meal estimator} & \multicolumn{2}{c}{End-of-meal}\\
+\cmidrule(lr){3-6}\cmidrule(l){7-8}
+A. Variance & Dyads & $\hat\varrho$, $\theta=0$ & $\hat\varrho$, $\theta=1$ & Size & Power & Size & Power\\
+\midrule
+All stable & 50 & 1.012 & 0.617 & 0.007 & 0.065 & 0.048 & 0.593\\
+ & 100 & 1.005 & 0.619 & 0.019 & 0.167 & 0.051 & 0.885\\
+ & 200 & 1.003 & 0.605 & 0.033 & 0.359 & 0.057 & 0.991\\
+ & 400 & 0.996 & 0.607 & 0.041 & 0.615 & 0.046 & 1.000\\
+Half occasional & 50 & 1.003 & 0.586 & 0.006 & 0.062 & 0.030 & 0.120\\
+ & 100 & 1.004 & 0.622 & 0.014 & 0.169 & 0.054 & 0.261\\
+ & 200 & 0.998 & 0.606 & 0.033 & 0.361 & 0.053 & 0.541\\
+ & 400 & 0.999 & 0.605 & 0.037 & 0.633 & 0.046 & 0.824\\
+\bottomrule
+\end{tabular}
+
+\vspace{6pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+& \multicolumn{3}{c}{Half-meal estimator} & \multicolumn{3}{c}{End-of-meal}\\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+B. Departure & $\hat\varrho$, $\theta=0$ & Size & Power & $\hat h$, $\theta=0$ & Size & Power\\
+\midrule
+Half-meal dispersion 0.9, assumed 0.7 & 0.792 & 0.033 & 0.248 & 1.005 & 0.048 & 0.783\\
+Shared second-half change, mean $+4\%$, SD 10\% & 1.046 & 0.017 & 0.178 & 1.002 & 0.050 & 0.875\\
+Faster eaters slow 5\% more per SD & 0.666 & 0.025 & 0.242 & 1.003 & 0.057 & 0.798\\
+Decaying drive, $l_{\max}=2.4\times10^{-4}$ & 0.993 & 0.018 & 0.170 & 1.006 & 0.054 & 0.875\\
+Decaying drive, $l_{\max}=5\times10^{-4}$ & 0.975 & 0.017 & 0.185 & 1.001 & 0.057 & 0.888\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The half-meal test was conservative and much less powerful. The end-of-meal ratio is
+unaffected by the shared change in rate, which cancels between the diners, and by
+the person-specific slowing, which enters the solo and joint sessions alike; the
+half-meal estimator is moved by both, and by an error in $\phi$. In FIC, the log
+ratio of second-half to first-half bites had mean 0.037 and standard deviation
+0.222 across meals, against 0.221 expected from counting noise at $\phi=0.7$.
+
+% =====================================================================
+\section{Pilot study size for the variance components}\label{sec:pilot}
+
+$k$ people each ate $m$ solo 12-minute meals. Rates were normal with between-meal
+standard deviation $0.0130\,\mathrm{s}^{-1}$, split as stated, counts had
+$\phi=0.7$, and the components were estimated as in \texttt{variance\_components.py}:
+the pooled within-person variance of the rates net of counting variance gives the
+occasion part, and the between-meal variance net of counting variance gives the
+total. Table~\ref{tab:pilot} gives the central 95\% range of the estimates over
+2{,}000 replicates. With its actual design (five of 12 participants with repeat
+meals), FIC gave an occasion share of 1, with a bootstrap interval from 0 to 1
+(main text).
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Central 95\% range of the estimated occasion share
+$\sigma_o^2/(\sigma_o^2+\sigma_p^2)$ and stable standard deviation $\sigma_p$
+($\mathrm{s}^{-1}$), true share in parentheses. FIC has 12 people and 21 meals.}\label{tab:pilot}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Variance (true share) & People & Meals each & Occasion share & $\sigma_p$\\
+\midrule
+Half occasional (0.50) & 12 & 2 & 0.00--1.00 & 0.000--0.016\\
+ & 12 & 4 & 0.12--0.99 & 0.001--0.014\\
+ & 24 & 2 & 0.00--1.00 & 0.000--0.014\\
+ & 24 & 4 & 0.23--0.83 & 0.005--0.013\\
+ & 48 & 2 & 0.14--0.91 & 0.003--0.013\\
+ & 48 & 4 & 0.30--0.72 & 0.006--0.012\\
+ & 96 & 2 & 0.27--0.77 & 0.006--0.012\\
+ & 96 & 4 & 0.36--0.67 & 0.007--0.011\\
+All stable (0.00) & 12 & 2 & 0.00--0.62 & 0.005--0.019\\
+ & 12 & 4 & 0.00--0.31 & 0.007--0.018\\
+ & 24 & 2 & 0.00--0.35 & 0.008--0.017\\
+ & 24 & 4 & 0.00--0.19 & 0.008--0.017\\
+ & 48 & 2 & 0.00--0.23 & 0.009--0.016\\
+ & 48 & 4 & 0.00--0.12 & 0.010--0.016\\
+ & 96 & 2 & 0.00--0.15 & 0.010--0.015\\
+ & 96 & 4 & 0.00--0.09 & 0.011--0.015\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\bigskip
+\noindent\textbf{References}
+
+\begingroup\small
+\setlength{\parindent}{-0.3in}\setlength{\leftskip}{0.3in}\setlength{\parskip}{3pt}
+
+Barnett, A. G., van der Pols, J. C., \& Dobson, A. J. (2005). Regression to the mean: What it is and how to deal with it. \emph{International Journal of Epidemiology, 34}(1), 215--220.
+
+Cox, D. R. (1962). \emph{Renewal theory}. Methuen.
+
+Fuller, W. A. (1987). \emph{Measurement error models}. Wiley.
+
+Hinkley, D. V. (1969). On the ratio of two correlated normal random variables. \emph{Biometrika, 56}(3), 635--639.
+
+Kieckens, S. N., \& Izgarshev, M. D. (2026, September 15--21). \emph{A dynamical model of social eating: Coupling, mimicry, and convergence in dyads} [Paper presentation]. International Conference of Numerical Analysis and Applied Mathematics (ICNAAM 2026), Heraklion, Greece.
+
+MacKinnon, J. G., \& White, H. (1985). Some heteroskedasticity-consistent covariance matrix estimators with improved finite sample properties. \emph{Journal of Econometrics, 29}(3), 305--325.
+
+Marsaglia, G. (1965). Ratios of normal variables and ratios of sums of uniform variables. \emph{Journal of the American Statistical Association, 60}(309), 193--204.
+
+Stefanski, L. A., \& Boos, D. D. (2002). The calculus of M-estimation. \emph{The American Statistician, 56}(1), 29--38.
+
+\endgroup
+
+\end{document}

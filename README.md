@@ -8,7 +8,7 @@ alternative* (Izgarshev & Kieckens).
 couplingdx/   the package: design diagnostics and the estimators (no dependencies)
 analysis/     scripts reproducing every number, table and figure; outputs in analysis/out/
 data/         derived FIC bite timelines, extracted bite times, meal-to-participant table
-figures/      Figures 1-4
+figures/      Figures 1-4 as printed in the manuscript
 paper/        supplement.tex (LaTeX source of the Supplementary Material)
 ```
 
@@ -40,7 +40,7 @@ python pooled_fit.py             # worked example of the estimator (S6)
 python revision_sims.py          # S8-S11: facilitation by group, partner-effect test,
                                  #   existing pairs, rank test, time course, pilot size
 python revision_tables.py        # rows of Supplementary Tables S2-S6
-python make_figures.py           # figures/fig1-4.pdf
+python make_figures.py           # figures/fig1-4.pdf (same data; earlier panel styling)
 ```
 
 `fic_subjects.py` links meals to participants. It needs the original FIC pickle

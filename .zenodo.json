@@ -1,0 +1,11 @@
+{
+  "title": "couplingdx: code, derived data and software for \"Dividing by a Difference of Noisy Baselines\"",
+  "upload_type": "software",
+  "description": "Design diagnostics and a pooled errors-in-variables estimator for two-person coupling studies (mimicry, synchrony, convergence), with the analysis scripts, derived Food Intake Cycle (FIC) bite timelines and simulation outputs that reproduce every number, table and figure in Izgarshev and Kieckens, \"Dividing by a Difference of Noisy Baselines: Why Per-Dyad Estimates of a Coupling Parameter Fail, and How to Size a Pooled Alternative\". The underlying FIC recordings are the property of their originators and are not included.",
+  "creators": [
+    {"name": "Izgarshev, Mark D."},
+    {"name": "Kieckens, Sophie Noemi"}
+  ],
+  "license": "MIT",
+  "keywords": ["dyadic data", "behavioral synchrony", "convergence", "measurement error", "actor-partner interdependence model", "power analysis", "eating behavior"]
+}

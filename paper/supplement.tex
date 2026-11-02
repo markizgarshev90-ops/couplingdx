@@ -23,14 +23,14 @@
 \newcommand{\kj}{k_j}
 \newcommand{\gt}{\tilde{g}}
 \title{Supplementary Material\\
-\large Dividing by a difference of noisy baselines:\\ why per-dyad estimates of a coupling parameter fail, and how to size a pooled alternative}
+\large Dividing by a Difference of Noisy Baselines: Why Per-Dyad Estimates of a Coupling Parameter Fail, and How to Size a Pooled Alternative}
 \author{Mark D. Izgarshev and Sophie Noemi Kieckens}
 \date{}
 \begin{document}
 \maketitle
 
-\noindent Equations, sections and propositions prefixed S refer to this document;
-unprefixed equation numbers refer to the main text.
+\noindent Equations, sections, tables and propositions prefixed S refer to this
+document; unprefixed equation, table and figure numbers refer to the main text.
 
 % =====================================================================
 \section{The coupling models}
@@ -285,12 +285,12 @@ without occasion variance.
 
 \subsection{Why truncation and filtering bias toward coupling}
 
-Under $\kappa=0$, $\hat h$ is centred near 1 and, at low $\zeta$, spreads widely to
+Under $\kappa=0$, $\hat h$ is centered near 1 and, at low $\zeta$, spreads widely to
 both sides. Retaining only $0<\hat h<1$ discards the upper half of the null
 distribution and every negative value. Every retained estimate maps to
 $\hat\theta>0$, so the retained median is positive however large the sample. The
 remedy is to invert over the whole real line, using $h$ extended to $\theta<0$ and
-$\hat\theta=+\infty$ for $\hat h\le0$, and to summarise with order statistics or
+$\hat\theta=+\infty$ for $\hat h\le0$, and to summarize with order statistics or
 Fieller sets.
 
 Retaining only dyads with $\hat\nu\ge\nu_0$ conditions on $|\hat\Gamma|$ being large.
@@ -322,9 +322,9 @@ and the gap signal-to-noise ratio at $h=1$ is bounded by $\Gamma/(\sqrt2\,\sigma
 for every $T$. The baseline contrast from $m$ sessions of length $T_s$ has
 variance $(\phi S/T_s+2\sigma_o^2)/m$.
 
-\paragraph{Coupling on realised events.} The simulations draw each diner's counts
+\paragraph{Coupling on realized events.} The simulations draw each diner's counts
 independently given the deterministic means of main-text Eq.~(9). Suppose instead
-that the coupling acts on realised counts, so that in a stochastic version of
+that the coupling acts on realized counts, so that in a stochastic version of
 Eq.~(1) the gap obeys, approximately,
 \[
 dD=(\gt-2\kappa D)\,dt+dM,
@@ -348,7 +348,7 @@ $\Gamma=0$, and that the two couplings may differ in this second moment.
 
 In the slow-drive limit of main-text Eq.~(9), each diner's intake is an
 actor--partner combination of the two baselines, with actor effect $(1+h)/2$ and
-partner effect $(1-h)/2$. For dyad $d$, with arbitrary labelling of $i$ and $j$,
+partner effect $(1-h)/2$. For dyad $d$, with arbitrary labeling of $i$ and $j$,
 define
 \[
 y_d=\hat S_d\,\frac{\kj-\ki}{\kj+\ki},\qquad
@@ -421,7 +421,7 @@ assumptions. Their agreement with \eqref{eq:pooledvar} checks the large-sample
 approximation under the model. Section~\ref{sec:robust} examines small samples,
 skewed rates, a decaying drive, heterogeneous coupling and differential facilitation,
 and Section~\ref{sec:facil} facilitation that differs between groups and pre-existing
-pairs; coupling on realised events is not examined.
+pairs; coupling on realized events is not examined.
 \end{remark}
 
 \subsection{Pairing schemes}
@@ -499,7 +499,7 @@ $\hat h_{\mathrm{pool}}$ only relative to the comparison group, since differenti
 facilitation can move it in either direction. Report the partner-effect test
 (Section~\ref{sec:facil}) alongside: it does not need facilitation to be equal
 across groups. A regression of $y_d$ on $x_d$ and $x_d\times$closeness, with the
-same errors-in-variables correction, generalises this to a continuous moderator.
+same errors-in-variables correction, generalizes this to a continuous moderator.
 \item \emph{Per-dyad estimates, if reported.} Report them descriptively with
 Fieller intervals and with $\zeta$. Do not truncate at $\hat h=1$, and do not
 select dyads on the baselines that enter the estimate.
@@ -625,15 +625,16 @@ leverage-corrected (HC3) standard error of main-text Method. The code is
 the plain sandwich (HC0) the null rejection rates were 0.087 at 20 and 0.073 at 30
 dyads per group (6{,}000 replicates; \texttt{hc\_comparison.py}); HC3 divides each score by $1-\ell_d$, $\ell_d=(x_d^2-v_d)/\sum_d(x_d^2-v_d)$.
 \item[R2, skewed rates.] Stable rates lognormal with the same mean and standard
-deviation; occasion effects a centred gamma variable with shape 2 (skewness 1.4).
+deviation; occasion effects a centered gamma variable with shape 2 (skewness 1.4).
 \item[R3, decaying drive.] All sessions generated from the exact solution of main-text
 Eq.~(1), Eq.~\eqref{eq:solution}, with $l_p\sim U(0,l_{\max})$ independently per
 person; solo rates computed as count divided by session length, as an analyst would.
 \item[R4, heterogeneous coupling.] $\theta_d\sim\mathrm{Gamma}(\text{shape }2,
 \text{scale }0.5)$ in the coupled group. The target is the contrast-weighted mean
-$\mathbb{E}[h_d\Gamma_d^2]/\mathbb{E}[\Gamma_d^2]$ (Section~\ref{sec:pooled}).
+$\mathbb{E}[h_d\Gamma_d^2]/\mathbb{E}[\Gamma_d^2]$ (Section~\ref{sec:pooled}), and
+95\% intervals covered it in 0.940 of replicates.
 \item[R5, differential facilitation.] $A_p=1.1\,(1+\delta z_p)$, with $z_p$ the
-person's standardised solo rate, applied in both groups.
+person's standardized solo rate, applied in both groups.
 \end{description}
 
 \begin{table}[H]
@@ -704,7 +705,7 @@ partner effects sum to one, the slow-drive intakes are
 with $A_p$ allowed to depend on the person. Each diner's joint-session rate is
 regressed on their own and their partner's baseline, with an intercept, by the
 method of moments: the summed replicate variances $\sum v$ are subtracted from the
-diagonal of the moment matrix of the centred baselines, as in
+diagonal of the moment matrix of the centered baselines, as in
 Section~\ref{sec:pooled}. Both members of a dyad enter as rows, and the standard
 error of the partner coefficient comes from deleting one dyad at a time.
 
@@ -854,7 +855,7 @@ It needs no solo sessions, and an occasion shift in the joint session is part of
 $\Gamma_o$ rather than noise. It does need $\phi$ for counts over half a meal.
 
 The simulations follow Section~\ref{sec:robust}, with the counts of each half drawn
-separately. The departures were: half-meal counts with dispersion 0.9 analysed with
+separately. The departures were: half-meal counts with dispersion 0.9 analyzed with
 0.7; a change in rate between the halves shared by both diners and varying across
 dyads (mean $+4\%$, standard deviation 10\% on the log scale), in the joint session
 only; faster eaters slowing by 5\% more per standard deviation of their rate in the

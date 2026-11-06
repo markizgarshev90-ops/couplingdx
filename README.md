@@ -29,6 +29,29 @@ alternative* (Izgarshev & Kieckens).
 pip install "git+https://github.com/markizgarshev90-ops/couplingdx#subdirectory=couplingdx"
 ```
 
+## What the tool does
+
+`couplingdx` answers two questions that decide whether a study of mimicry,
+synchrony or convergence between two people can work at all.
+
+1. **Can coupling be estimated for a single pair?** A per-pair estimate divides by
+   the difference between two noisy solo baselines. When that difference is small
+   compared with the noise, the estimate is less precise than the quantity it
+   targets. The package gives a single number, `zeta`, and a feasibility verdict
+   (`zeta >= 5.2`).
+2. **How many pairs does a pooled estimate need?** Pooling across pairs never
+   divides by one pair's difference. The package computes the number of pairs per
+   group for a chosen power, and fits the pooled estimator once data are in.
+
+It has no dependencies, a command-line interface, and a Python API.
+
+```bash
+python -m couplingdx per-dyad --contrast 0.0124 --rate-total 0.173 --duration 740 \
+      --n-baseline 8 --baseline-session 740 --dispersion 0.7
+python -m couplingdx pooled --mean-rate 0.0867 --between-sd 0.013 --duration 740 \
+      --n-baseline 4 --baseline-session 740 --dispersion 0.7
+```
+
 ## Repository layout
 
 

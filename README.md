@@ -1,8 +1,36 @@
+<p align="center">
+  <img src="assets/logo.svg" alt="couplingdx logo" width="560">
+</p>
+
+<p align="center">
+  <a href="LICENSE.txt"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+  <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-blue.svg">
+  <img alt="Dependencies: none" src="https://img.shields.io/badge/dependencies-none-brightgreen.svg">
+  <img alt="Version 0.3.0" src="https://img.shields.io/badge/version-0.3.0-informational.svg">
+</p>
+
+<p align="center">
+  <a href="#what-the-tool-does">What it does</a> &middot;
+  <a href="#how-researchers-can-use-it">For researchers</a> &middot;
+  <a href="#install">Install</a> &middot;
+  <a href="#reproducing-the-paper">Reproduce the paper</a> &middot;
+  <a href="#citing">Cite</a>
+</p>
+
 # Dividing by a difference of noisy baselines
 
 Code, derived data and software for *Dividing by a difference of noisy baselines:
 why per-dyad estimates of a coupling parameter fail, and how to size a pooled
 alternative* (Izgarshev & Kieckens).
+
+## Install
+
+```bash
+pip install "git+https://github.com/markizgarshev90-ops/couplingdx#subdirectory=couplingdx"
+```
+
+## Repository layout
+
 
 ```
 couplingdx/   the package: design diagnostics and the estimators (no dependencies)
@@ -12,13 +40,6 @@ figures/      Figures 1-4 as printed in the manuscript
 paper/        supplement.tex (LaTeX source of the Supplementary Material)
 ```
 
-## The package
-
-```bash
-pip install "git+https://github.com/markizgarshev90-ops/couplingdx#subdirectory=couplingdx"
-```
-
-See `couplingdx/README.md` for a tutorial.
 
 ## Reproducing the paper
 

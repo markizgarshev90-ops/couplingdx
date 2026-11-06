@@ -52,6 +52,41 @@ python -m couplingdx pooled --mean-rate 0.0867 --between-sd 0.013 --duration 740
       --n-baseline 4 --baseline-session 740 --dispersion 0.7
 ```
 
+## How researchers can use it
+
+**Before collecting data (design stage)**
+
+1. Take rough inputs from pilot or published data: mean event rate per person,
+   between-person spread of rates, session length, and how many solo sessions per
+   person you can run.
+2. Run `per_dyad_check` (or the `per-dyad` command). If it says the design is not
+   feasible per pair, do not plan an analysis that estimates coupling pair by pair.
+3. Run `pooled_n` (or the `pooled` command) to get the pairs per group needed for
+   your target power. Compare random pairing, screened pairing and existing pairs
+   with the `pairing` option.
+
+**After collecting data (analysis stage)**
+
+4. Give `fit_pooled` each pair's solo rates and joint-session counts, once per group.
+5. Compare groups with `compare_groups`, and report `fit_partner_effect` alongside it.
+
+```python
+import couplingdx as c
+
+fit_close = c.fit_pooled(dyads_close)
+fit_strangers = c.fit_pooled(dyads_strangers)
+c.compare_groups(fit_close, fit_strangers)   # {'diff', 'se', 'z', 'p'}
+```
+
+**A good fit**: studies with two people and a countable behavior, such as bites,
+speech turns or gestures, where each person has also been measured alone. The
+paper's worked example is eating behavior in the Food Intake Cycle data.
+
+**Not a good fit**: single-session designs with no solo baselines. The estimator
+needs at least two solo sessions per person (four or more recommended).
+
+Full tutorial and the rules the package encodes: `couplingdx/README.md`.
+
 ## Repository layout
 
 
@@ -106,3 +141,9 @@ originators and are available from them under their own terms.
 ## License
 
 MIT for the code. The FIC data are under their originators' terms.
+
+## Citing
+
+See `CITATION.cff`, or cite: Izgarshev, M. D. & Kieckens, S. N., *Dividing by a
+difference of noisy baselines: why per-dyad estimates of a coupling parameter fail,
+and how to size a pooled alternative.*

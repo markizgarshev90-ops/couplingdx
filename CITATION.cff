@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper."
+title: "couplingdx"
+type: software
+license: MIT
+version: 0.3.0
+repository-code: "https://github.com/markizgarshev90-ops/couplingdx"
+abstract: >-
+  Design diagnostics and a pooled errors-in-variables estimator for two-person
+  coupling studies (mimicry, synchrony, convergence).
+authors:
+  - family-names: Izgarshev
+    given-names: "Mark D."
+  - family-names: Kieckens
+    given-names: "Sophie Noemi"
+preferred-citation:
+  type: article
+  title: "Dividing by a difference of noisy baselines: why per-dyad estimates of a coupling parameter fail, and how to size a pooled alternative"
+  authors:
+    - family-names: Izgarshev
+      given-names: "Mark D."
+    - family-names: Kieckens
+      given-names: "Sophie Noemi"

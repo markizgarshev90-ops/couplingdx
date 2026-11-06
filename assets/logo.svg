@@ -1,34 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="260" viewBox="0 0 800 260" role="img" aria-label="couplingdx: noisy per-dyad baselines versus a pooled fit">
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="couplingdx symbol: noisy dyad points pooled into one fitted line">
   <title>couplingdx</title>
-  <rect width="800" height="260" rx="18" fill="#0f172a"/>
-
-  <!-- left: two noisy solo baselines, their tiny gap -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-    <polyline stroke="#38bdf8" points="36,96 52,84 68,104 84,86 100,100 116,82 132,98 148,88 164,102 180,90"/>
-    <polyline stroke="#f472b6" points="36,112 52,124 68,106 84,122 100,108 116,126 132,110 148,120 164,106 180,118"/>
+  <rect width="256" height="256" rx="56" fill="#0f172a"/>
+  <g fill="#38bdf8" fill-opacity="0.9">
+    <circle cx="64" cy="186" r="9"/><circle cx="88" cy="160" r="9"/><circle cx="104" cy="186" r="9"/>
+    <circle cx="124" cy="140" r="9"/><circle cx="146" cy="162" r="9"/><circle cx="160" cy="112" r="9"/>
+    <circle cx="182" cy="136" r="9"/><circle cx="196" cy="84" r="9"/>
   </g>
-  <text x="108" y="150" text-anchor="middle" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">two noisy baselines</text>
-  <text x="108" y="172" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#f87171" font-style="italic">1 / (a &#8722; b)  &#10007;</text>
-  <text x="108" y="192" text-anchor="middle" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#f87171">per-dyad estimate explodes</text>
-
-  <!-- arrow -->
-  <path d="M215 130 H262" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
-  <path d="M254 121 L266 130 L254 139" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-  <!-- right: many dyads pooled into one fitted line -->
-  <g fill="#38bdf8" fill-opacity="0.85">
-    <circle cx="292" cy="170" r="4"/><circle cx="306" cy="150" r="4"/><circle cx="318" cy="168" r="4"/>
-    <circle cx="332" cy="138" r="4"/><circle cx="346" cy="152" r="4"/><circle cx="358" cy="120" r="4"/>
-    <circle cx="372" cy="134" r="4"/><circle cx="386" cy="102" r="4"/><circle cx="398" cy="118" r="4"/>
-    <circle cx="412" cy="88" r="4"/><circle cx="424" cy="104" r="4"/><circle cx="438" cy="74" r="4"/>
-  </g>
-  <path d="M284 176 L446 70" stroke="#f472b6" stroke-width="4" stroke-linecap="round" fill="none"/>
-  <text x="365" y="206" text-anchor="middle" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">many dyads, one pooled fit</text>
-  <text x="365" y="226" text-anchor="middle" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">stable estimate, sized in advance</text>
-
-  <!-- wordmark -->
-  <line x1="490" y1="40" x2="490" y2="220" stroke="#334155" stroke-width="2"/>
-  <text x="515" y="125" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="52" font-weight="700" fill="#f8fafc">coupling<tspan fill="#38bdf8">dx</tspan></text>
-  <text x="517" y="160" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">Can your two-person study detect coupling?</text>
-  <text x="517" y="184" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">Check feasibility. Size the pooled test.</text>
+  <path d="M50 200 L208 66" stroke="#f472b6" stroke-width="12" stroke-linecap="round" fill="none"/>
 </svg>

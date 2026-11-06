@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg" alt="couplingdx: noisy per-dyad baselines versus a pooled fit" width="700">
+  <img src="assets/logo.svg" alt="couplingdx logo" width="160">
 </p>
 
 <p align="center">

@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="#about">About</a> &middot;
   <a href="#what-the-tool-does">What it does</a> &middot;
   <a href="#how-researchers-can-use-it">For researchers</a> &middot;
   <a href="#install">Install</a> &middot;
@@ -22,6 +23,19 @@
 Code, derived data and software for *Dividing by a difference of noisy baselines:
 why per-dyad estimates of a coupling parameter fail, and how to size a pooled
 alternative* (Izgarshev & Kieckens).
+
+## About
+
+Design diagnostics and a pooled errors-in-variables estimator for two-person
+coupling studies (mimicry, synchrony, convergence). It tells you whether a
+per-pair estimate can work, how many pairs a pooled test needs, and fits the
+pooled estimator once data are in. No dependencies, Python 3.8+, MIT licensed.
+
+**Authors:** Mark D. Izgarshev and Sophie Noemi Kieckens
+
+**Topics:** `dyadic-data` &middot; `behavioral-synchrony` &middot; `mimicry` &middot;
+`measurement-error` &middot; `power-analysis` &middot; `statistics` &middot;
+`research-software` &middot; `python`
 
 ## Install
 

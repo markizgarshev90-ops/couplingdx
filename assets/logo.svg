@@ -1,10 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="couplingdx symbol: noisy dyad points pooled into one fitted line">
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="A group of people standing by a lake">
   <title>couplingdx</title>
-  <rect width="256" height="256" rx="56" fill="#0f172a"/>
-  <g fill="#38bdf8" fill-opacity="0.9">
-    <circle cx="64" cy="186" r="9"/><circle cx="88" cy="160" r="9"/><circle cx="104" cy="186" r="9"/>
-    <circle cx="124" cy="140" r="9"/><circle cx="146" cy="162" r="9"/><circle cx="160" cy="112" r="9"/>
-    <circle cx="182" cy="136" r="9"/><circle cx="196" cy="84" r="9"/>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#f472b6"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#0c4a6e"/>
+    </linearGradient>
+    <clipPath id="tile"><rect width="256" height="256" rx="56"/></clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="256" height="256" fill="url(#sky)"/>
+    <circle cx="196" cy="70" r="20" fill="#fde68a"/>
+    <path d="M0 150 L52 112 L96 140 L150 98 L210 138 L256 118 V160 H0 Z" fill="#1e293b" fill-opacity="0.85"/>
+    <rect y="150" width="256" height="106" fill="url(#lake)"/>
+    <g fill="none" stroke="#e0f2fe" stroke-opacity="0.6" stroke-width="3" stroke-linecap="round">
+      <path d="M28 196 H72"/><path d="M110 214 H170"/><path d="M180 192 H226"/><path d="M52 232 H100"/>
+    </g>
+    <!-- group of people on the shore -->
+    <g fill="#0f172a">
+      <circle cx="82" cy="112" r="9"/><path d="M68 150 Q68 126 82 126 Q96 126 96 150 Z"/>
+      <circle cx="108" cy="104" r="10"/><path d="M92 150 Q92 120 108 120 Q124 120 124 150 Z"/>
+      <circle cx="136" cy="108" r="9.5"/><path d="M121 150 Q121 123 136 123 Q151 123 151 150 Z"/>
+      <circle cx="162" cy="115" r="8"/><path d="M150 150 Q150 129 162 129 Q174 129 174 150 Z"/>
+    </g>
+    <!-- reflections -->
+    <g fill="#0f172a" fill-opacity="0.3">
+      <ellipse cx="82" cy="162" rx="12" ry="6"/><ellipse cx="108" cy="164" rx="14" ry="6"/>
+      <ellipse cx="136" cy="163" rx="13" ry="6"/><ellipse cx="162" cy="162" rx="11" ry="5"/>
+    </g>
   </g>
-  <path d="M50 200 L208 66" stroke="#f472b6" stroke-width="12" stroke-linecap="round" fill="none"/>
 </svg>

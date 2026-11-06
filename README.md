@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg" alt="couplingdx logo" width="560">
+  <img src="assets/logo.svg" alt="couplingdx: noisy per-dyad baselines versus a pooled fit" width="700">
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
   <a href="#citing">Cite</a>
 </p>
 
-# Dividing by a difference of noisy baselines
+# couplingdx: Dividing by a difference of noisy baselines
 
 Code, derived data and software for *Dividing by a difference of noisy baselines:
 why per-dyad estimates of a coupling parameter fail, and how to size a pooled

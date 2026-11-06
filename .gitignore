@@ -1,9 +1,7 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-build/
 *.egg-info/
-*.aux
-*.log
-*.out
-FIC.pkl
+build/
+dist/
+.DS_Store

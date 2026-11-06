@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200" role="img" aria-label="couplingdx">
+  <title>couplingdx</title>
+  <rect width="640" height="200" rx="16" fill="#0f172a"/>
+  <g fill="none" stroke-linecap="round" stroke-width="5">
+    <path d="M40 120 C 70 40, 100 40, 130 100 S 190 160, 220 80" stroke="#38bdf8"/>
+    <path d="M40 80 C 70 160, 100 160, 130 100 S 190 40, 220 120" stroke="#f472b6"/>
+  </g>
+  <circle cx="130" cy="100" r="7" fill="#f8fafc"/>
+  <text x="260" y="104" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#f8fafc">coupling<tspan fill="#38bdf8">dx</tspan></text>
+  <text x="262" y="140" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="17" fill="#94a3b8">design diagnostics for two-person coupling studies</text>
+</svg>
